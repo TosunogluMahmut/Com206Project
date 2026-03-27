@@ -13,7 +13,6 @@ class CekiciApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.orange),
-        // Figma tarzı yuvarlak butonlar için genel ayar
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
@@ -26,21 +25,19 @@ class CekiciApp extends StatelessWidget {
   }
 }
 
-// --- MODEL ---
 class Cekici {
   String plaka, surucu, tip;
   bool musaitMi;
   Cekici(this.plaka, this.surucu, this.tip, this.musaitMi);
 }
 
-// --- 1. SAYFA: MODERN GİRİŞ ---
 class GirisSayfasi extends StatelessWidget {
   const GirisSayfasi({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[50], // Arka planı hafif gri yaptık (Figma tarzı)
+      backgroundColor: Colors.grey[50],
       body: Padding(
         padding: const EdgeInsets.all(24.0),
         child: Column(
@@ -50,7 +47,6 @@ class GirisSayfasi extends StatelessWidget {
             const SizedBox(height: 10),
             const Text("GELİŞİM LOGO", style: TextStyle(fontSize: 28, fontWeight: FontWeight.w900, color: Colors.orange)),
             const SizedBox(height: 40),
-            // Figma usulü TextField tasarımı
             TextField(decoration: InputDecoration(labelText: "Kullanıcı", border: OutlineInputBorder(borderRadius: BorderRadius.circular(15)))),
             const SizedBox(height: 15),
             TextField(obscureText: true, decoration: InputDecoration(labelText: "Şifre", border: OutlineInputBorder(borderRadius: BorderRadius.circular(15)))),
@@ -69,7 +65,6 @@ class GirisSayfasi extends StatelessWidget {
   }
 }
 
-// --- 2. SAYFA: ANA SAYFA (FİLO) ---
 class AnaSayfa extends StatefulWidget {
   const AnaSayfa({super.key});
   @override
@@ -98,15 +93,14 @@ class _AnaSayfaState extends State<AnaSayfa> {
               itemCount: filo.length,
               itemBuilder: (context, index) {
                 return Card(
-                  elevation: 2, // Hafif gölge
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)), // Yuvarlak köşeler
+                  elevation: 2,
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
                   margin: const EdgeInsets.only(bottom: 12),
                   child: ListTile(
                     contentPadding: const EdgeInsets.all(15),
                     leading: CircleAvatar(backgroundColor: Colors.orange.withOpacity(0.1), child: const Icon(Icons.local_shipping, color: Colors.orange)),
                     title: Text(filo[index].plaka, style: const TextStyle(fontWeight: FontWeight.bold)),
                     subtitle: Text("${filo[index].surucu}\n${filo[index].tip}"),
-                    // Modern Durum Işığı
                     trailing: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -119,7 +113,6 @@ class _AnaSayfaState extends State<AnaSayfa> {
               },
             ),
           ),
-          // "Filomuza Katıl" Butonu (CTA - Call to Action)
           Padding(
             padding: const EdgeInsets.all(24.0),
             child: OutlinedButton(
@@ -141,7 +134,6 @@ class _AnaSayfaState extends State<AnaSayfa> {
   }
 }
 
-// --- 3. SAYFA: ARAÇ EKLEME ---
 class EklemeSayfasi extends StatelessWidget {
   const EklemeSayfasi({super.key});
   @override
